@@ -1,0 +1,19 @@
+kind create cluster --name demo
+
+sudo kubectl cluster-info --context kind-demo
+{
+
+Kubernetes control plane is running at https://127.0.0.1:46855
+CoreDNS is running at https://127.0.0.1:46855/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+}
+
+
+
+k get ns 
+k get namespace 
+k get po 
+k get svc (uses default namespace)
+k get svc --namespace (-n)
+k create 
+k port-forward -n default nginx-pod 8888:10
