@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spread-test
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: spread
+  template:
+    metadata:
+      labels:
+        app: spread
+    spec:
+      containers:
+        - name: nginx
+          image: nginx
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "64Mi"

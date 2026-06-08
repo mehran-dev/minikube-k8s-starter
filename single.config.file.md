@@ -74,3 +74,5 @@ kubectl delete pvc nginx-pvc --force --grace-period=0
 kubectl patch pv nginx-pv -p '{"spec":{"claimRef": null}}'
 
 kubectl config view
+
+docker rm -f $(docker ps -aq --filter ancestor=kindest/node)
