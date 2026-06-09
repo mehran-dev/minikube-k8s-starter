@@ -25,5 +25,7 @@ Autoscaler Node حذف می‌کند
 ```
 kubectl get pdb
 
+kubectl drain k8s-lab-worker --ignore-daemonsets --delete-emptydir-data
+
 
 ```

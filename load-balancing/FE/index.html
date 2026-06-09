@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <body>
+    <h2>Todo</h2>
+
+    <input id="msg" placeholder="write something" />
+    <button onclick="send()">Send</button>
+
+    <ul id="list"></ul>
+
+    <script>
+      const API_old = "http://backend-service:8000";
+      const API = "http://localhost:8000";
+
+      async function send() {
+        const message = document.getElementById("msg").value;
+        await fetch(API + "/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message }),
+        });
+        load();
+      }
+
+      async function load() {
+        const res = await fetch(API + "/list");
+        const data = await res.json();
+        const ul = document.getElementById("list");
+        ul.innerHTML = "";
+        data.items.forEach((i) => {
+          const li = document.createElement("li");
+          li.textContent = i;
+          ul.appendChild(li);
+        });
+      }
+
+      load();
+    </script>
+  </body>
+</html>
